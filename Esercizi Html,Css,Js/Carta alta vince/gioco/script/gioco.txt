@@ -1,0 +1,25 @@
+document.getElementById("gioca").onclick=function(){
+
+    //genero i due numeri casuali quando l'utente clicka sul bottone
+
+    let numeroCasuale_giocatore=Math.floor(Math.random()*10)+1;
+    let numeroCasuale_computer=Math.floor(Math.random()*10)+1;
+
+    //inserisco i numeri generati nelle rispettive caselle che rappresentano le carte
+
+    document.getElementById("you").innerHTML=numeroCasuale_giocatore;
+    document.getElementById("cpu").innerHTML=numeroCasuale_computer;
+
+    //confronto i valori delle carte per capire chi ha vinto
+    if (numeroCasuale_giocatore>numeroCasuale_computer){
+        document.getElementById("messaggio").innerHTML="Congratulazioni! Hai vinto tu :)"
+    }
+
+    else if (numeroCasuale_giocatore<numeroCasuale_computer){
+        document.getElementById("messaggio").innerHTML="Oh no! Ha vinto il computer :("
+    }
+
+    else{
+        document.getElementById("messaggio").innerHTML="Pareggio! Altro giro? Offre la casa :)"
+    }
+}

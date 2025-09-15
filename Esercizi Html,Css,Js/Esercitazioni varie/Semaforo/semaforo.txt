@@ -1,0 +1,46 @@
+//gestione delle variabili principali
+
+const luce = document.querySelectorAll(".luce");
+const colori = ["rosso", "giallo", "verde"];
+const button = document.getElementById("Start_Pause");
+let c = 0;
+let intervallo_colori = setInterval(cambia_colore, 2000);
+
+function cambia_colore() {
+    //rimuovo tutte le classi di colore da ogni luce (non so come ottimizzare per togliere solamente quello precedente ogni volta)
+    for (let i = 0; i < luce.length; i++) {
+        luce[i].classList.remove("rosso", "giallo", "verde");
+    }
+
+    //questa riga mi serve a calcolare quale luce deve accendersi. colori.lenght vale sempre 3, -1 è per far iniziare il valore di indice_colore a 2, e c si incrementa ad ogni ciclo
+    const indice_colore = colori.length - 1 - c;
+
+    //accende la luce corrispondente all'indice calcolato precedentemente
+    luce[indice_colore].classList.add(colori[indice_colore]);
+
+    //dopo c++ al prossimo giro in riga 16 viene selezionata la luce successiva a quella accesa in questo giro
+    c++;
+    if (c >= colori.length) {
+        //se c ha raggiunto colori.lenght significa che è stato acceso il semaforo rosso, quindi va riazzerato tutto
+        c = 0;
+    }
+}
+
+button.onclick= function(){
+    //la struttura if-else mi serve a capire se ho già clickato. in questo modo fa 3 cose:arresta la funzione setInterval - imposta a 0 il valore di intervallo_colori per gestire il controllo al prossimo click - modifica la scritta nel bottone
+    if(intervallo_colori>0){
+        clearInterval(intervallo_colori);
+        intervallo_colori=0;
+        button.innerHTML="Start";
+    }
+
+    //i comandi nell'else sono il contrario di quelle nell'if, cioè reimposta tutto come era prima del click
+    else{
+        intervallo_colori=setInterval(cambia_colore,2000);
+        button.innerHTML="Stop";
+    }
+    
+}
+
+
+cambia_colore(); //questa riga mi serve a far iniziare subito ad accendere il verde, senza aspettare 2 secondi dall'apertura della pagina

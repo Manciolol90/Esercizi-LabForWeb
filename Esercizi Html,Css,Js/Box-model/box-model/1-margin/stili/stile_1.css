@@ -1,0 +1,14 @@
+#box_1 {
+    width: 450px;
+    height: 280px;
+    background-color: pink;
+    margin: 25px 0px 20px 50px;
+}
+
+#box2 {
+    width: 350px;
+    height: 230px;
+    background-color: aqua;
+    margin-left: 40px;
+    text-align: center;
+}

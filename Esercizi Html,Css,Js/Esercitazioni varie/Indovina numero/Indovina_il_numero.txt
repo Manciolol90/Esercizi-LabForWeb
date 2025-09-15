@@ -1,0 +1,68 @@
+//per la gestione del numero da indovinare e del tempo rimasto
+let numero_segreto = Math.floor(Math.random() * 100) + 1;
+let countdown = setInterval(aggiorna_timer, 1000);
+let tempo_rimasto = 30;
+
+//gestione riferimenti agli elementi HTML
+let input = document.getElementById("tentativo");
+let bottone = document.getElementById("verifica");
+let bottone_reset = document.getElementById("reset");
+let messaggio = document.getElementById("messaggio");
+let timer = document.getElementById("timer");
+
+//funzione per aggiornare il timer ogni secondo
+function aggiorna_timer() {
+  tempo_rimasto--;
+  
+  if(tempo_rimasto==19){
+    timer.style.color="yellow";
+  }
+  else if (tempo_rimasto==9){
+    timer.style.color="red";
+  }
+  timer.textContent="Tempo rimasto: " + tempo_rimasto;
+  if(tempo_rimasto==0){
+    fine_gioco();
+  }
+}
+
+//funzione per gestire il tentativo dell'utente
+function verifica_tentativo() {
+  let tentativo = input.value;
+
+  if (tentativo == numero_segreto) {
+    messaggio.textContent = "Complimenti! Hai indovinato il numero! Era proprio " + numero_segreto;
+    clearInterval(countdown);
+  } else if (tentativo < numero_segreto) {
+    messaggio.textContent = "Troppo basso! Riprova.";
+  } else {
+    messaggio.textContent = "Troppo alto! Riprova.";
+  }
+
+  input.value = "";
+}
+
+//funzione per concludere il gioco
+function fine_gioco() {
+  clearInterval(countdown);
+  messaggio.textContent="Tempo scaduto! Il numero da indovinare era " + numero_segreto;
+}
+
+//funzione per resettare tutto e ricominciare a giocare
+function reset_gioco() {
+  numero_segreto = Math.floor(Math.random() * 100) + 1;
+  tempo_rimasto = 30;
+
+  messaggio.textContent="";
+  timer.style.color="green";
+  timer.textContent="Tempo rimasto: " + tempo_rimasto;
+  
+  input.value = "";
+
+  clearInterval(countdown);
+  countdown = setInterval(aggiorna_timer, 1000);
+}
+
+//gestione dei click
+bottone.addEventListener("click", verifica_tentativo);
+bottone_reset.addEventListener("click", reset_gioco);

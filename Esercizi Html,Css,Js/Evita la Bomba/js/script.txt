@@ -1,0 +1,69 @@
+//creo la lista di li per generare la tabella di gioco
+const griglia=document.querySelector("#gioco ul");
+
+function genera_griglia(){
+    for (let i=0; i<=15;i++){
+        griglia.innerHTML+="<li></li>";
+    }
+};
+
+genera_griglia();
+
+//associo ad una casella casuale la posizione segreta della bomba
+
+const button=griglia.querySelectorAll("li");
+let pos_bomba; //variabile per gestire la posizione nascosta della bomba
+function piazza_bomba(){
+    pos_bomba=Math.floor(Math.random()*16);
+    for(let i=0;i<=15;i++){
+        button[i].style.backgroundImage=""; //questa riga serve per quando ricomincia la partita. pulisce lo schermo dalle selezioni precedenti
+        button[i].classList.remove("bomb"); //questa simile alla precedente, rimuove la bomba nascosta della partita precedente
+        if(pos_bomba==i){
+            button[i].classList.add("bomb");
+            console.log(i)
+        }
+    }
+}
+
+piazza_bomba();
+
+
+//attribuisco l'evento click per ogni li, gestendo con un if le regole del gioco
+let conta_click=0;
+
+//questa funzione serve a gestire il click su ogni elemento del nodelist button
+button.forEach(click => {
+    click.addEventListener("click",esegui_click)
+})
+
+//in questa funzione il this è il li su cui è stato fatto click
+
+function esegui_click(){
+        if(this.classList=="bomb"){
+            conta_click+=1;
+            this.style.backgroundImage="url(immagini/bomb.png)";
+            //questo blocco di codice serve a bloccare il gioco. non ho assegnato const ai vari document... perchè li utilizzo solo una volta
+            document.querySelector("#gioco span").classList.add("bloccaGioco");
+            document.querySelector("#fine span").innerHTML=conta_click;
+            document.getElementById("fine").style.display="block";
+            document.getElementById("new").onclick=ricomincia;
+        }
+        else{
+            conta_click+=1;
+            this.style.backgroundImage="url(immagini/rainbow.png)";
+            this.style.cursor="default"; //a rimarcare che il rainbow già clickato non può essere clickato nuovamente
+            this.removeEventListener("click",esegui_click); //questa funzione mi permette di non conteggiare più volte il click sullo stesso li
+        }
+    }
+
+
+//la funzione ricomincia mette tutto come era all'inizio
+function ricomincia(){
+    document.getElementById("fine").style.display="none";
+    document.querySelector("#gioco span").classList.remove("bloccaGioco");
+    piazza_bomba();
+    conta_click=0;
+    button.forEach(click => {
+        click.addEventListener("click",esegui_click)
+    }) //questa funzione mi serve per far rientrare nell'addeventlistener tutti i li. se non ci fosse, i li con i rainbow della partita precedente sarebbero non clickabili durante la partita successiva.
+}

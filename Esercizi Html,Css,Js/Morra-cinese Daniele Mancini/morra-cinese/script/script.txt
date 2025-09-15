@@ -1,0 +1,176 @@
+//definisco i bottoni per snellire il codice e li associo alle funzioni .onclick
+
+const button_inizia=document.getElementById("inizia");
+const button_scelta=document.getElementById("scelta");
+const you=document.getElementById("you");
+button_inizia.onclick=scelta;
+const cpu=document.getElementById("cpu");
+button_inizia.onclick=scelta;
+const risultato=document.getElementById("risultato");
+const puntiYou=document.getElementById("punteggioYou");
+const puntiCpu=document.getElementById("punteggioCpu");
+
+//definisco la funzione per far apparire le scelte nel box del giocatore
+
+function scelta(){
+    //questa funzione deve eliminare la caratteristica display:none sulle immagini per farle apparire
+    button_scelta.style.display= "block";
+    button_inizia.style.visibility= "hidden";
+    //inoltre deve permettermi di ricominciare il gioco con entrambi i box puliti e il box risultato nascosto
+    you.style.backgroundImage="";
+    cpu.style.backgroundImage="";
+    risultato.style.display="none";
+    if(controllo == 1){
+        button_inizia.innerHTML="FAI LA TUA SCELTA"
+        controllo= 0;
+        p_cpu=0;
+        p_you=0;
+        puntiYou.innerHTML=p_you;
+        puntiCpu.innerHTML=p_cpu;
+    }
+}
+
+//definisco i bottoni della scelta del giocatore
+
+const button_foglia=document.getElementById("foglia");
+const button_sasso=document.getElementById("sasso");
+const button_forbice=document.getElementById("forbice");
+
+
+//ogni click del bottone deve far partire una scelta casuale da parte della cpu e far sparire le altre 2 scelte dal box "you"
+
+button_foglia.onclick=fun_foglia;
+button_sasso.onclick=fun_sasso;
+button_forbice.onclick=fun_forbice;
+
+//definisco le variabili per gestire i punteggi
+
+let p_you=puntiYou.innerHTML,p_cpu=puntiCpu.innerHTML,controllo=0;
+
+
+
+function fun_foglia(){
+    //prima di tutto modifichiamo quello che l'utente vede
+
+        button_scelta.style.display= "none";
+        you.style.backgroundImage="url(immagini/foglia.png)";
+        button_inizia.style.visibility= "visible";
+        
+        
+    //dopodichè generiamo una scelta casuale da parte della cpu
+        let numero=Math.floor(Math.random()*3);
+        if (numero == 0){
+            cpu.style.backgroundImage="url(immagini/foglia.png)"
+            risultato.innerHTML="Partita patta";
+            risultato.className="patta";
+        }
+        else if (numero == 1){
+            cpu.style.backgroundImage="url(immagini/forbice.png)"
+            risultato.innerHTML="Partita persa";
+            risultato.className="persa";
+            p_cpu++;
+        }
+        else {
+            cpu.style.backgroundImage="url(immagini/sasso.png)"
+            risultato.innerHTML="Partita vinta";
+            risultato.className="vinta";
+            p_you++;
+        }
+        
+        risultato.style.display="block";
+        //console.log(p_you,p_cpu);
+        puntiYou.innerHTML=p_you;
+        puntiCpu.innerHTML=p_cpu;
+
+        if(p_you ==3 || p_cpu ==3){
+            button_inizia.innerHTML="Ricomincia la partita"
+            controllo= 1;
+            if(p_you > p_cpu){
+                risultato.innerHTML="Congratulazioni! Hai vinto "+p_you+" a "+p_cpu+" contro la Cpu!";
+            }
+            else{
+                risultato.innerHTML="Oh no! Hai perso "+p_you+" a "+p_cpu+" contro la Cpu!";
+            }
+        }
+}
+
+function fun_sasso(){
+        button_scelta.style.display= "none";
+        you.style.backgroundImage="url(immagini/sasso.png)";
+        button_inizia.style.visibility= "visible";
+        
+        let numero=Math.floor(Math.random()*3);
+        if (numero == 0){
+            cpu.style.backgroundImage="url(immagini/foglia.png)"
+            risultato.innerHTML="Partita persa";
+            risultato.className="persa";
+            p_cpu++;
+        }
+        else if (numero == 1){
+            cpu.style.backgroundImage="url(immagini/forbice.png)"
+            risultato.innerHTML="Partita vinta";
+            risultato.className="vinta";
+            p_you++;
+        }
+        else {
+            cpu.style.backgroundImage="url(immagini/sasso.png)"
+            risultato.innerHTML="Partita patta";
+            risultato.className="patta";
+        }
+        
+        risultato.style.display="block";
+        //console.log(p_you,p_cpu);
+        puntiYou.innerHTML=p_you;
+        puntiCpu.innerHTML=p_cpu;
+        if(p_you ==3 || p_cpu ==3){
+            button_inizia.innerHTML="Ricomincia la partita"
+            controllo= 1;
+            if(p_you > p_cpu){
+                risultato.innerHTML="Congratulazioni! Hai vinto "+p_you+" a "+p_cpu+" contro la Cpu!";
+            }
+            else{
+                risultato.innerHTML="Oh no! Hai perso "+p_you+" a "+p_cpu+" contro la Cpu!";
+            }
+        }
+}
+
+function fun_forbice(){
+        button_scelta.style.display= "none";
+        you.style.backgroundImage="url(immagini/forbice.png)";
+        button_inizia.style.visibility= "visible";
+        
+        let numero=Math.floor(Math.random()*3);
+        if (numero == 0){
+            cpu.style.backgroundImage="url(immagini/foglia.png)"
+            risultato.innerHTML="Partita vinta";
+            risultato.className="vinta";
+            p_you++;
+        }
+        else if (numero == 1){
+            cpu.style.backgroundImage="url(immagini/forbice.png)"
+            risultato.innerHTML="Partita patta";
+            risultato.className="patta";
+        }
+        else {
+            cpu.style.backgroundImage="url(immagini/sasso.png)"
+            risultato.innerHTML="Partita persa";
+            risultato.className="persa";
+            p_cpu++;
+        }
+        
+        risultato.style.display="block";
+        //console.log(p_you,p_cpu);
+        puntiYou.innerHTML=p_you;
+        puntiCpu.innerHTML=p_cpu;
+        if(p_you ==3 || p_cpu ==3){
+            button_inizia.innerHTML="Ricomincia la partita"
+            controllo= 1;
+            if(p_you > p_cpu){
+                risultato.innerHTML="Congratulazioni! Hai vinto "+p_you+" a "+p_cpu+" contro la Cpu!";
+            }
+            else{
+                risultato.innerHTML="Oh no! Hai perso "+p_you+" a "+p_cpu+" contro la Cpu!";
+            }
+        }
+}
+

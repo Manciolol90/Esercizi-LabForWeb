@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+    background-color: red;
+    text-align: center;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.semaforo {
+  display: flex;
+  justify-content: center;
+}
+
+.luce {
+  border: #222222 1em solid;
+  width: 100px;
+  height: 100px;
+  background-color: #555555;
+  margin: 0 auto;
+  transition: background-color 0.1s;
+}
+
+.luce.rosso {
+  background-color: #ff0000;
+}
+
+.luce.giallo {
+  background-color: #ffff00;
+}
+
+.luce.verde {
+  background-color: #32cd32;
+}
+
+button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #222;
+  color: white;
+  transition: background-color 0.2s;
+  max-width: fit-content;
+  align-self: center;
+}
+
+button:hover {
+  background-color: #666;
+}

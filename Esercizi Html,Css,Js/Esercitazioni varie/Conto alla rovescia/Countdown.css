@@ -1,0 +1,63 @@
+/* regole generali per gestire il layout della pagina */
+
+*{
+    box-sizing: border-box;
+    font-family: 'Lobster Two', cursive;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+img{
+    max-width: 100%;   
+    align-items: center;
+}
+
+h1{
+    background-color: red;
+    color: gold;
+    text-align: center;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    transition: 1s;
+}
+
+/*gestione stili scritte e bottoni*/
+
+.timer{
+    border: rgb(255, 0, 0) 8px solid;
+    font-size: 8em;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.bottoni:hover{
+    cursor: pointer;
+}
+
+.nascosto{
+    display: none;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 8em;
+}

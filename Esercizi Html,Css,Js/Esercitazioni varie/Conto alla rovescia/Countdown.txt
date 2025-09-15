@@ -1,0 +1,80 @@
+//gestisco le definizioni delle variabili
+
+let start_pause_b=document.getElementById("Start_Pause");
+let refresh_b=document.getElementById("refresh");
+let decine=document.getElementById("decine");
+let unità=document.getElementById("unità");
+let drin=document.querySelector("section");
+let timer=document.querySelector("main");
+let colori=["#ff0000","#000000"]; //mia personalissima aggiunta per dare effetto strobo al drin
+let c=0;
+
+//gestisco il conto alla rovescia
+
+let intervallo_tempo=window.setInterval(tempo,1000)
+let b_strobo=setInterval(strobo, 50);
+
+//gestisco i click sui bottoni
+
+start_pause_b.onclick=start_pause;
+refresh_b.onclick=refresh;
+
+//definisco le funzioni da richiamare
+
+function start_pause(){
+    //questa funzione serve a interrompere/far ripartire lo scorrere del setinterval che gestisce il nostro timer
+    if(intervallo_tempo>0){
+        clearInterval(intervallo_tempo);
+        intervallo_tempo=0;
+        clearInterval(b_strobo); //voglio che il tasto pause blocchi anche lo strobo del drin
+        b_strobo=0;
+    }
+    else{
+        intervallo_tempo=window.setInterval(tempo,1000);
+        b_strobo=setInterval(strobo, 50);
+    }
+}
+
+function refresh(){
+    //questo mi serve per rimettere a posto i numeri a schermo
+    decine.innerHTML=1;
+    unità.innerHTML=0;
+    //questo mi serve per non far accavallare i timer (altrimenti ad ogni refresh il countdown accelera)
+    clearInterval(intervallo_tempo);
+    intervallo_tempo=0;
+    intervallo_tempo=window.setInterval(tempo,1000);
+    //questo mi serve a far sparire il drin se è apparso e far riapparire il countdown
+    timer.classList.remove("nascosto");
+    drin.classList.add("nascosto");
+    clearInterval(b_strobo);
+    b_strobo=0;
+    b_strobo=setInterval(strobo, 50); //questo mi serve altrimenti se ho clickato pause e poi refresh, quando arriva il drin non fa effetto strobo
+}
+
+function tempo(){
+   
+    //per gestire il conto alla rovescia
+    if(decine.innerHTML==1){
+        decine.innerHTML=0;
+        unità.innerHTML=9;
+    }
+    else{
+        if(unità.innerHTML==0){
+            timer.classList.add("nascosto");
+            drin.classList.remove("nascosto");
+        }
+        else{
+            unità.innerHTML--;
+        }
+    }
+}
+
+
+function strobo(){
+    //per dare l'idea di allarme suonato
+    drin.style.color=colori[c];
+    c++;
+    if(c==2){
+        c=0;
+    }
+}
