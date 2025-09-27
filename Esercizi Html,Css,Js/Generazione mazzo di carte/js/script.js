@@ -370,21 +370,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         container.innerHTML += format_Carta;
         let prossima_carta = container.querySelector(".card:last-child");
+
         setTimeout(function () {
           prossima_carta.classList.add("show");
         }, 10);
       }, i * 600);
     }
-    const flip_btn = document.querySelectorAll(".read-more");
-
-    for (let i = 0; i < flip_btn.length; i++) {
-      const questoflip = flip_btn[i];
-      questoflip.addEventListener("click", function () {
-        console.log(this, this.parent);
-        const card = this.closest(".card");
+    container.addEventListener("click", function (e) {
+      //console.log(e.target);
+      if (e.target.classList.contains("read-more")) {
+        const card = e.target.closest(".card");
         card.classList.toggle("is-flipped");
-      });
-    }
+      }
+    });
   }
 
   crea_mazzo(carte);
@@ -405,6 +403,14 @@ document.addEventListener("DOMContentLoaded", function () {
       container.innerHTML = "";
       crea_mazzo(carte_trovate);
     }
+  });
+
+  input.addEventListener("keyup", function () {
+    container.innerHTML = "";
+    const carte_trovate = carte.filter(function (carta) {
+      return carta.title.toLowerCase().includes(input.value.toLowerCase());
+    });
+    crea_mazzo(carte_trovate);
   });
 
   reset_btn.addEventListener("click", function () {
