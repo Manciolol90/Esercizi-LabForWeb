@@ -316,12 +316,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ]`;
 
+  let timoutIds = [];
   const carte = JSON.parse(gameCardsJSON);
   const container = document.querySelector(".container");
   function crea_mazzo(carte) {
-    clearTimeout;
+    timoutIds.forEach((id) => clearTimeout(id));
+
     for (let i = 0; i < carte.length; i++) {
-      setTimeout(function () {
+      const timeoutId = setTimeout(function () {
         const carta = carte[i];
         const format_Carta = `<div class="card">
       <div class="card__front">
@@ -375,6 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
           prossima_carta.classList.add("show");
         }, 10);
       }, i * 600);
+      timoutIds.push(timeoutId);
     }
     container.addEventListener("click", function (e) {
       //console.log(e.target);
