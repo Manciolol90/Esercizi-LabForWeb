@@ -1,0 +1,10 @@
+<h2>Stanze Prenotate: {{ stanze.length }}</h2>
+<p *ngIf="stanze.length === 0">Nessuna stanza prenotata.</p>
+<div *ngFor="let stanza of stanze" class="prenotate">
+  <div class="info">
+    <h3>{{ stanza.tipologia | titlecase }}</h3>
+    <p>{{ stanza.descrizione }}</p>
+    <p><strong>Prezzo:</strong> {{ stanza.prezzo }} €</p>
+  </div>
+  <button (click)="annulla(stanza)">Annulla</button>
+</div>

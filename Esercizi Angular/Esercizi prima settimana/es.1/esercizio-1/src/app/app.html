@@ -1,0 +1,15 @@
+<div>
+  <app-stanze-disponibili
+    [stanze]="stanzeDisponibili"
+    (stanzaSelezionata)="StanzaSelezionata($event)"
+  >
+  </app-stanze-disponibili>
+  <app-stanze-prenotate
+    [stanze]="stanzePrenotate"
+    (annullaPrenotazione)="AnnullaPrenotazione($event)"
+  >
+  </app-stanze-prenotate>
+  <p *ngIf="stanzePrenotate.length > 0">
+    <strong>Prezzo totale prenotazioni:</strong> {{ prezzoTotale() }} €
+  </p>
+</div>

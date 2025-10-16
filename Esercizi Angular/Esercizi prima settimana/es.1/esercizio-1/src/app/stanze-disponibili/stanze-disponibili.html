@@ -1,0 +1,9 @@
+<h2>Stanze Disponibili: {{ stanze.length }}</h2>
+<div *ngFor="let stanza of stanze" class="disponibili">
+  <div class="info">
+    <h3>{{ stanza.tipologia | titlecase }}</h3>
+    <p>{{ stanza.descrizione }}</p>
+    <p><strong>Prezzo:</strong> {{ stanza.prezzo }} €</p>
+  </div>
+  <button (click)="prenota(stanza)">Prenota</button>
+</div>
