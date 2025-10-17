@@ -1,0 +1,5 @@
+<p *ngIf="voce.length === 0">nessuna parola inserita...</p>
+<p *ngFor="let v of voce">
+  <strong>{{ v.parola }}</strong
+  >: {{ v.significato }}
+</p>
