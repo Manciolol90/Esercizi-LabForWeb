@@ -1,0 +1,6 @@
+<div>
+  <app-primo-numero (numeroDigitato)="onPrimoNumeroDigitato($event)"></app-primo-numero>
+  <app-operatore (operatoreDigitato)="onOperatoreDigitato($event)"></app-operatore>
+  <app-secondo-numero (numeroDigitato)="onSecondoNumeroDigitato($event)"></app-secondo-numero>
+  <app-risultato [risultato]="risultato" (calcola)="calcolaRisultato()"></app-risultato>
+</div>

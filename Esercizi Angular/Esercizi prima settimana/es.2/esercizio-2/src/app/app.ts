@@ -1,4 +1,4 @@
-import { Component, signal, Input, Output, EventEmitter } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AggiungiParola } from './aggiungi-parola/aggiungi-parola';
 import { CercaParola } from './cerca-parola/cerca-parola';
