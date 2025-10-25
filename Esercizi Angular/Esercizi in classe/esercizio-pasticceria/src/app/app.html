@@ -1,0 +1,30 @@
+<h1>{{ titolo }}</h1>
+
+@if (dolci.length === 0) {
+  <p>Il bancone è vuoto 😢</p>
+}
+
+@if (dolci.length > 0) {
+  <ul>
+    @for (dolce of dolci; track dolce) {
+      <li [ngClass]="{ esaurito: !dolce.disponibile }">
+        <span>{{ dolce.nome }}</span>
+        <span >{{ dolce.disponibile ? '✅ Disponibile' : '❌ Esaurito'}}</span>
+
+        @if (dolce.disponibile) {
+          <button (click)="compra(dolce)">Compra</button>
+        }
+      </li>
+    }
+  </ul>
+}
+
+  <div class="azioni">
+    <button (click)="rifornisci()">🔄 Rifornisci tutto</button>
+  </div>
+
+  @if (tuttiEsauriti) {
+    <p class="messaggio">
+      Tutti i dolci sono esauriti 😭
+    </p>
+  }

@@ -1,0 +1,26 @@
+<h2>🌼 Il Mio Giardino Interattivo 🌼</h2>
+
+@if (plants.length === 0) {
+    <p>Il giardino è vuoto!</p>
+}
+
+@if (plants.length > 0) {
+    <div class="plants">
+        @for (plant of plants; track plant; let i = $index) {
+            <app-plant
+                [name]="plant.name"
+                [waterLevel]="plant.waterLevel"
+                [maxWater]="plant.maxWater"
+                (water)="onWaterPlant(i)">
+            </app-plant>
+        }
+    </div>
+}
+
+<div class="actions">
+    <button (click)="resetGarden()">🔄 Resetta giardino</button>
+</div>
+
+@if (allBlooming) {
+    <p class="message">🌸 Tutte le piante sono fiorite! 🌸</p>
+}

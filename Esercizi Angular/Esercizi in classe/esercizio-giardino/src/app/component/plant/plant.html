@@ -1,0 +1,13 @@
+<div class="plant-card" [ngClass]="{ blooming: isBlooming }">
+    <h3>{{ name }}</h3>
+    <p>Livello acqua: {{ waterLevel }}/{{ maxWater }}</p>
+    <p>{{ statusText }}</p>
+
+    <p>Mancano {{ calcolaInnaffiatureMancanti() }} innaffiature..</p>
+
+    <button 
+      (click)="onWaterClick()" 
+      [disabled]="isBlooming">
+    💧  Innaffia
+    </button>
+</div>

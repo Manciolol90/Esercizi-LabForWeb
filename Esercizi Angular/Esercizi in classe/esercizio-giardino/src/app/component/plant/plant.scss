@@ -1,0 +1,32 @@
+.plant-card {
+  border: 2px solid #81c784;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 150px;
+  text-align: center;
+  background-color: #f1f8e9;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.plant-card:hover {
+  transform: scale(1.05);
+}
+
+.plant-card.blooming {
+  background-color: #ffe0f0;
+  border-color: #f06292;
+}
+
+button {
+  background-color: #81c784;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+
+button:disabled {
+  background-color: #c8e6c9;
+  cursor: not-allowed;
+}

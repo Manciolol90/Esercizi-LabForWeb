@@ -1,0 +1,23 @@
+h2 {
+  text-align: center;
+  color: #2e7d32;
+}
+
+.plants {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.message {
+  text-align: center;
+  color: #e91e63;
+  font-weight: bold;
+}
