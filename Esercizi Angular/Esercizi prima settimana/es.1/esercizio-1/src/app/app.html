@@ -1,14 +1,21 @@
 <div>
+  <!-- Nella componente stanze disponibili facciamo 2 tipi di binding: il primo è property binding, il secondo event binding -->
   <app-stanze-disponibili
     [stanze]="stanzeDisponibili"
     (stanzaSelezionata)="StanzaSelezionata($event)"
   >
+    <!-- il property binding serve a passare i dati dall'app main al componente stanze-disponibili. nel ts di stanze disponibili c'è una variabile inizialmente vuota chiamata stanze, che riceve in input le stanze disponibili dall'app main. VEDERE L'HTML DI STANZE-DISPONIBILI PER CAPIRE COME VENGONO GESTITI QUESTI DATI-->
+
+    <!-- l'event binding serve a ricevere un evento dal componente stanze disponibili quando l'utente clicca sul pulsante prenota. nel ts di stanze disponibili c'è un metodo chiamato prenota che riceve che emette un evento stanzaSelezionata con la stanza selezionata come payload (parametro di ingresso). questo evento viene catturato nell'app main e gestito dal metodo StanzaSelezionata (nel ts di app) -->
   </app-stanze-disponibili>
+
+  <!-- In modo analogo gestiamo l'annullamento delle prenotazioni -->
   <app-stanze-prenotate
     [stanze]="stanzePrenotate"
     (annullaPrenotazione)="AnnullaPrenotazione($event)"
   >
   </app-stanze-prenotate>
+  <!-- Qui mostriamo il prezzo totale delle stanze prenotate, solo se è maggiore di zero -->
   <p *ngIf="stanzePrenotate.length > 0">
     <strong>Prezzo totale prenotazioni:</strong> {{ prezzoTotale() }} €
   </p>

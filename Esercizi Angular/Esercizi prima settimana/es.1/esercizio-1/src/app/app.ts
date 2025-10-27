@@ -56,6 +56,30 @@ export class App {
       descrizione: 'Stanza tripla con tre letti singoli',
       prezzo: 120,
     },
+    {
+      id: 7,
+      tipologia: 'doppia',
+      descrizione: 'Stanza doppia non finestrata',
+      prezzo: 70,
+    },
+    {
+      id: 8,
+      tipologia: 'tripla',
+      descrizione: 'Stanza tripla con letto matrimoniale e letto singolo',
+      prezzo: 120,
+    },
+    {
+      id: 9,
+      tipologia: 'doppia',
+      descrizione: 'Stanza doppia suite con idromassaggio',
+      prezzo: 370,
+    },
+    {
+      id: 10,
+      tipologia: 'singola',
+      descrizione: 'Stanza singola non finestrata',
+      prezzo: 70,
+    },
   ];
 
   stanzePrenotate: {
@@ -70,7 +94,7 @@ export class App {
     //andiamo a sovrascrivere l'elenco delle stanze disponibili, eliminando quella appena prenotata
     this.stanzeDisponibili = this.stanzeDisponibili.filter((s) => s.id !== stanza.id);
 
-    // push della stanza prenotata nell'elenco delle stanze prenotate
+    // push della stanza prenotata nell'array delle stanze prenotate. questo array verrà passato come input al componente stanze-prenotate
     this.stanzePrenotate.push(stanza);
 
     console.log('Stanza prenotata:', stanza);

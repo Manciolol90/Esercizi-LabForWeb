@@ -1,9 +1,13 @@
+<!-- stanze.length è un'interpolazione. la variabile stanze presente nel .ts di questo componente è inizialmente vuota e viene riempita dinamicamente nell'app.html tramite il property binding, ossia IL VALORE DI STANZE AGGIORNATO DINAMICAMENTE VIENE PRESO DAL VALORE ATTUALE DI "STANZEDISPONIBILI" NELL'APP.ts-->
+
 <h2>Stanze Disponibili: {{ stanze.length }}</h2>
+<!--ogni stanza è rappresentata da un div con classe "disponibili", all'interno del quale ci sono le informazioni sulla stanza e il pulsante per prenotarla. le informazioni vengono gestite da interpolazioni facili facili-->
 <div *ngFor="let stanza of stanze" class="disponibili">
   <div class="info">
     <h3>{{ stanza.tipologia | titlecase }}</h3>
     <p>{{ stanza.descrizione }}</p>
     <p><strong>Prezzo:</strong> {{ stanza.prezzo }} €</p>
   </div>
+  <!--  questo bottone richiama la funzione prenota() passando la stanza come argomento, la quale emette un evento con la stanza selezionata. tale evento viene mandato in output tramite l'EventEmitter, e intercettato nell'app.html tramite l'event binding (stanzaSelezionata)="StanzaSelezionata($event)", il quale comunica con app.ts-->
   <button (click)="prenota(stanza)">Prenota</button>
 </div>
