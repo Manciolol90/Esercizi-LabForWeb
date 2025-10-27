@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { StanzeDisponibili } from './stanze-disponibili/stanze-disponibili';
 import { CommonModule } from '@angular/common';
 import { StanzePrenotate } from './stanze-prenotate/stanze-prenotate';
