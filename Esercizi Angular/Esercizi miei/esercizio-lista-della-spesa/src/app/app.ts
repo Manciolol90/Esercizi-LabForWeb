@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ListaProdotti } from './lista-prodotti/lista-prodotti';
 import { BarraInserimento } from './barra-inserimento/barra-inserimento';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,7 +8,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
     ListaProdotti,
     BarraInserimento,
     MatInputModule,
@@ -21,6 +19,5 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('esercizio-lista-della-spesa');
   prodotti: { nome: string; quantita: number }[] = [];
 }
