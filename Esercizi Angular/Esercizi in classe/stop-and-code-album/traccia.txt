@@ -1,0 +1,33 @@
+Stop&Code Finale
+
+Sviluppare un’applicazione web per la visualizzazione di Album musicali, col solo scopo di consultazione e non di vendita.
+
+L’interfaccia deve mostrare la lista di album, senza vincoli e quindi disponibile per tutti.
+
+Opzionale: Nell’applicazione sarà possibile accedere ad un contenuti di amministrazione del sito, accessibili solo dopo aver effettuato il login. Una volta loggato, si potrà aggiungere ed eliminare album dalla lista.
+
+Per quanto riguarda lo stile dell’interfaccia, è completamente a piacere.
+
+Consigli: suddividete il problema in problemi più piccoli, e soprattutto a step, ad esempio:
+
+Creare il servizio che si interfaccia con le API di jsonplaceholder
+ per sviluppare i metodi:
+a. GET degli album (https://jsonplaceholder.typicode.com/albums
+)
+b. POST per l’aggiunta di un nuovo album (https://jsonplaceholder.typicode.com/albums
+)
+c. DELETE per l’eliminazione es. (https://jsonplaceholder.typicode.com/albums/1
+)
+
+Creare il componente AlbumList per mostrare la lista degli album ottenuti dal servizio.
+Il servizio iniettato nel componente creato
+
+Implementare il routing: creare una rotta principale, aggiungendo poi la rotta nel file app.routes.ts
+
+Creare la rotta di singolo Album, scegliendo se visualizzare su una rotta a parte oppure se visualizzare con una rotta figlia (children) di AlbumList; nel dettaglio della rotta sarà presente un nuovo URL (es: details/:id)
+
+Creare la login: quindi nella App component, dovrà essere gestito un flag di login (trovate tutto spiegato ne “Esercizio Login Service” messo in dispensa)
+
+Se non si è loggati, la sezione di aggiunta album non deve apparire, non serve aggiungere un button per il login, ma semplicemente il bottone di aggiunta non appare. Anche il pulsante di eliminazione dell’album non deve apparire per i non loggati.
+
+NOTA BENE: Se la scelta di inserire il dettaglio e l’aggiunta di un album senza cambiare pagina, quindi come rotte children di AlbumList, potreste consultare la soluzione nella dispensa del corso “Esercizio prodotti con rotte figlie ed url parameter con input binding”.

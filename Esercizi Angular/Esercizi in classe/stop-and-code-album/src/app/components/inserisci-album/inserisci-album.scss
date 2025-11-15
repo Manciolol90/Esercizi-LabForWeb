@@ -1,0 +1,25 @@
+.example-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  border-radius: 8px;
+  background-color: #ccc;
+}
+
+button {
+  width: fit-content;
+  align-self: center;
+  margin: 16px 0;
+  border-radius: 20px;
+}

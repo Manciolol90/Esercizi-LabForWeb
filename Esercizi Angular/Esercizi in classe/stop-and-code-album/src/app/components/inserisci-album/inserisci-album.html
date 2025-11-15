@@ -1,0 +1,19 @@
+<form class="example-form" #formInserimento="ngForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Numero utente</mat-label>
+    <input matInput type="text" name="nome-utente" ngModel required />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Titolo dell'album</mat-label>
+    <textarea
+      matInput
+      type="text"
+      placeholder="Ex. The dark side of the moon"
+      name="titolo-album"
+      ngModel
+      required
+    ></textarea>
+  </mat-form-field>
+  <button matButton="outlined" type="submit" [disabled]="!formInserimento.valid">Submit</button>
+</form>

@@ -1,0 +1,18 @@
+@if(albums.length === 0) {
+<p>Caricamento in corso...</p>
+} @else {
+<div class="container">
+  @for (album of albums; track album.id) {
+  <mat-card class="album-card">
+    <mat-card-header>
+      <mat-card-title>{{ album.title }}</mat-card-title>
+      <mat-card-subtitle>ID: {{ album.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Utente: {{ album.userId }}</p>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>
+
+}

@@ -1,0 +1,1 @@
+.album-card{width:180px;height:220px;border:1px solid #000;border-radius:8px;background-color:#00a7e9;margin-top:4px}.container{display:flex;flex-wrap:wrap;gap:16px}.album-card:hover{box-shadow:0 4px 8px rgba(0,0,0,.2);transform:translateY(-4px);background-color:rgba(172,255,47,.625);transition:all .3s ease}
